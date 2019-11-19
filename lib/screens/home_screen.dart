@@ -4,6 +4,7 @@ import 'package:azkarapp/screens/evining.dart';
 import 'package:azkarapp/screens/sbha.dart';
 import 'package:azkarapp/screens/salah.dart';
 import 'package:azkarapp/screens/sleep.dart';
+import 'package:azkarapp/add_somthing_screens/textform_field.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -146,10 +147,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      buildItem1(
-                        text1: ' إضافه أدعيه',
-                        imageIcon1: Tab(
-                          icon: Image.asset('assets/images/prayIcon.png'),
+                      InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AddSomething()));
+                        },
+                        child: buildItem1(
+                          text1: ' إضافه شئ خاص بي',
+                          imageIcon1: Tab(
+                            icon: Image.asset('assets/images/prayIcon.png'),
+                          ),
                         ),
                       ),
                       InkWell(
