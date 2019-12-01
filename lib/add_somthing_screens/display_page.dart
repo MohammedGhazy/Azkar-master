@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:azkarapp/model/add_something.dart';
-import 'package:azkarapp/add_somthing_screens/textform_field.dart';
 
 class DisplayPage extends StatefulWidget {
   @override
