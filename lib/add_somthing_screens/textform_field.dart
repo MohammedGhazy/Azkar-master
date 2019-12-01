@@ -37,7 +37,7 @@ class _AddSomethingState extends State<AddSomething> {
                 centerTitle: true,
               ),
               body: Center(
-                  child: Column(
+                  child: ListView(
                 children: <Widget>[
                   Container(
                     child: Padding(
@@ -55,22 +55,28 @@ class _AddSomethingState extends State<AddSomething> {
                     ),
                   ),
                   ScopedModelDescendant<AppModel>(
-                    builder: (context, child, model) => RaisedButton(
-                      child: Text('إضافه'),
-                      onPressed: () {
-                        Item item = Item(controller.text);
-                        model.addItem(item);
-                        setState(() => controller.text = '');
-                      },
+                    builder: (context, child, model) => Padding(
+                      padding: const EdgeInsets.only(right:80.0,left: 80.0),
+                      child: RaisedButton(
+                        child: Text('إضافه'),
+                        onPressed: () {
+                          Item item = Item(controller.text);
+                          model.addItem(item);
+                          setState(() => controller.text = '');
+                        },
+                      ),
                     ),
                   ),
-                  RaisedButton(
-                    child: Text('Display Page'),
-                    onPressed: () {
-                    Navigator
-                        .of(context)
-                        .push(MaterialPageRoute(builder: (context) => DisplayPage()));
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(right:80.0,left: 80.0),
+                    child: RaisedButton(
+                      child: Text('الذهاب إلي ماكتبته'),
+                      onPressed: () {
+                      Navigator
+                          .of(context)
+                          .push(MaterialPageRoute(builder: (context) => DisplayPage()));
+                      },
+                    ),
                   )
                 ],
               )),

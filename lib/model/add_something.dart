@@ -1,10 +1,11 @@
 import 'package:scoped_model/scoped_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppModel extends Model {
   List<Item> _items = [];
   List<Item> get items => _items;
 
-  void addItem(Item item) {
+  void addItem(Item item) async{
     _items.add(item);
   }
 

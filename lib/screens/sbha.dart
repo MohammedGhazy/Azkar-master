@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SbhaScreen extends StatefulWidget {
   @override
@@ -28,7 +29,10 @@ class _SbhaScreenState extends State<SbhaScreen> {
               FlatButton(
                 onPressed: () {
                   _dismissDialog();
-                  reset();
+                  removeCounter();
+                  setState(() {
+                    _counter=0;
+                  });
                 },
                 child: Text('نعم'),
               )
@@ -37,20 +41,40 @@ class _SbhaScreenState extends State<SbhaScreen> {
         });
   }
 
-  void increment() {
+//  void increment() {
+//    setState(() {
+//      _counter++;
+//    });
+//  }
+
+//  void reset(){
+//    if(isClick){
+//      setState(() {
+//        _counter=0;
+//      });
+//    }
+//  }
+  @override
+  void initState() {
+    super.initState();
+    getCounter();
+  }
+
+  getCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _counter++;
+      _counter = (prefs.getInt("counter") ?? 0);
     });
   }
 
-  void reset(){
-    if(isClick){
-      setState(() {
-        _counter=0;
-      });
-    }
+  setCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt("counter", _counter);
   }
-  @override
+  removeCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove("counter");
+  }
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
@@ -76,7 +100,7 @@ class _SbhaScreenState extends State<SbhaScreen> {
               elevation: 0.0,
               centerTitle: true,
             ),
-            body: Column(
+            body: ListView(
               children: <Widget>[
                 Center(
                   child: Align(
@@ -102,14 +126,18 @@ class _SbhaScreenState extends State<SbhaScreen> {
                 SizedBox(
                   height: 60.0,
                 ),
-                Expanded(
-                  child: Row(
+                Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
-                          onTap: (){increment();},
+                          onTap: (){
+                            setState(() {
+                              _counter++;
+                            });
+                            setCounter();
+                          },
                           child: Container(
                             height: 60.0,
                             width: 180.0,
@@ -150,7 +178,6 @@ class _SbhaScreenState extends State<SbhaScreen> {
                       )
                     ],
                   ),
-                )
               ],
             ))
       ],
