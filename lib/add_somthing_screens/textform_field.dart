@@ -1,8 +1,7 @@
+import 'package:azkarapp/model/add_something.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:azkarapp/model/add_something.dart';
 import 'package:azkarapp/add_somthing_screens/display_page.dart';
-
 class AddSomething extends StatefulWidget {
   @override
   _AddSomethingState createState() => _AddSomethingState();
@@ -10,6 +9,8 @@ class AddSomething extends StatefulWidget {
 
 class _AddSomethingState extends State<AddSomething> {
   TextEditingController controller = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -60,7 +61,7 @@ class _AddSomethingState extends State<AddSomething> {
                       child: RaisedButton(
                         child: Text('إضافه'),
                         onPressed: () {
-                          Item item = Item(controller.text);
+                          Items item = Items(controller.text);
                           model.addItem(item);
                           setState(() => controller.text = '');
                         },

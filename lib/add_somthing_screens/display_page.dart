@@ -9,6 +9,7 @@ class DisplayPage extends StatefulWidget {
 }
 
 class _DisplayPageState extends State<DisplayPage> {
+
   @override
   Widget build(BuildContext context) {
     return Stack(

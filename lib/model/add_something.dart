@@ -1,21 +1,20 @@
 import 'package:scoped_model/scoped_model.dart';
-
 class AppModel extends Model {
-  List<Item> _items = [];
-  List<Item> get items => _items;
+  List<Items> _items = [];
+  List<Items> get items => _items;
 
-  void addItem(Item item){
+  void addItem(Items item){
     _items.add(item);
+    notifyListeners();
   }
 
-  void deleteItem(Item item) {
+  void deleteItem(Items item) {
     _items.remove(item);
     notifyListeners();
   }
 }
-
-class Item {
+class Items{
   final String name;
-
-  Item(this.name);
+  Items(this.name);
 }
+

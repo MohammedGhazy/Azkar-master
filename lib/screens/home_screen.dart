@@ -1,10 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:azkarapp/screens/mornning.dart';
 import 'package:azkarapp/screens/evining.dart';
 import 'package:azkarapp/screens/sbha.dart';
 import 'package:azkarapp/screens/salah.dart';
 import 'package:azkarapp/screens/sleep.dart';
-import 'package:azkarapp/add_somthing_screens/textform_field.dart';
+import 'package:azkarapp/add_somthing_screens/user_input.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -150,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       InkWell(
                         onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AddSomething()));
+                              builder: (context) => StudentPage()));
                         },
                         child: buildItem1(
                           text1: ' إضافه شئ خاص بي',
